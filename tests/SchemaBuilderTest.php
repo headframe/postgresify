@@ -49,5 +49,10 @@ class SchemaBuilderTest extends AbstractTestCase
         $schemaBuilder->create('sample', function (Blueprint $table) use ($method) {
             $table->{$method}('column_name');
         });
+
+        // Thank you PHPUnit 6.x.
+        $this->addToAssertionCount(Mockery::getContainer()->mockery_getExpectationCount());
+
+        Mockery::close();
     }
 }
